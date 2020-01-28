@@ -42,9 +42,8 @@ export class QuizService {
   }
 
   getQuizzes() {
-    return this.http.request('GET', this.url, { responseType: 'json' }).subscribe(result => {
-      const key = 'quizzes';
-      this.quizzes = result[key];
+    return this.http.request('GET', this.url, { responseType: 'json' }).subscribe((result: {quizzes: Quiz[]}) => {
+      this.quizzes = result.quizzes;
       this.quizzes$.next(this.quizzes);
     });
   }
