@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Quiz } from '../models/quiz.model';
 import { QUIZ_LIST } from '../mocks/quiz-list.mock';
-import {HttpClient} from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
@@ -13,10 +13,10 @@ export class QuizService {
    * https://angular.io/docs/ts/latest/tutorial/toh-pt4.html
    */
 
-   /**
-    * The list of quiz.
-    * The list is retrieved from the mock.
-    */
+  /**
+   * The list of quiz.
+   * The list is retrieved from the mock.
+   */
   private quizzes: Quiz[] = QUIZ_LIST;
   private url = 'https://​api.myjson.com/bins/silu2';
 
@@ -42,8 +42,9 @@ export class QuizService {
   }
 
   getQuizzes() {
-    return this.http.request('GET', this.url, {responseType: 'json'}).subscribe(result => {
-      this.quizzes = result.quizzes;
+    return this.http.request('GET', this.url, { responseType: 'json' }).subscribe(result => {
+      const key = 'quizzes';
+      this.quizzes = result[key];
       this.quizzes$.next(this.quizzes);
     });
   }
