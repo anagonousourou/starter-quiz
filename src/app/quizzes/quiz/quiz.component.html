@@ -1,7 +1,18 @@
-<div class="card">
-    <h2>
-        <i class="fab fa-leanpub"></i>
-        {{quiz.name}}
+<div class="card p-3 m-2">
+    <h2 class="card-title">
+        <em *ngIf="quiz.theme==='Actor'"  class="fas fa-film"></em>
+        
+       {{quiz.name}}
     </h2>
-    <button class="button-card" (click)="selectQuiz()">Select</button>
+    <div class="card-subtitle">
+        Theme : {{quiz.theme}}
+    </div>
+    <div>
+        Créé le {{quiz.date | date}}
+    </div>
+    <div>
+        <button class="ml-1 mr-1 btn btn-success" (click)="selectQuiz()">Select</button>
+        <button class="ml-1 mr-1 btn btn-danger" (click)="deleteQuiz()">Supprimer</button>
+    </div>
+    
 </div>
